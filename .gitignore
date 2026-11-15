@@ -1,0 +1,9 @@
+# Lista blanca exacta (frente R5, 2026-11-15). Todo lo demás se ignora.
+# Nunca: _generador/, tarjetas-investigacion.js, Investigaciones/, informe.md, informe-version-web.pdf.
+/*
+!/.gitignore
+!/LICENSE
+!/README.md
+!/index.html
+!/informe-02-asuntos-regulatorios.pdf
+!/vercel.json
