@@ -5,21 +5,27 @@
 <meta name="author" content="Juan David Cano">
 <meta property="og:type" content="article"><meta property="og:title" content="El mercado de servicios de gestión de asuntos regulatorios y cumplimiento de producto en Colombia · Cuadernos de Investigación Sectorial" data-i18n-attr="content:meta.title">
 <meta property="og:description" content="Investigación de mercado y de sector sobre los servicios que ayudan a las empresas a obtener y mantener los permisos para vender sus productos en Colombia: demanda, costos obligatorios, competencia y efecto de la digitalización." data-i18n-attr="content:meta.desc">
+<meta property="og:image" content="https://jdc-portafolio.vercel.app/og-image.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ===== JDC-BASE v1 · INICIO · copiar idéntico desde SISTEMA-DISENO §9; no editar en la página ===== */
+/* v1.1 (2026-11-21): contraste AA en tema claro (tokens X-text, --link), texto oscuro sobre degradado, sección activa en la barra */
 :root{
   --ink:#F4F6FB; --panel:#FFFFFF; --panel-2:#EEF2F9;
   --line:#E1E7F0; --line-strong:#C7D1E0;
-  --text:#1B2233; --text-dim:#5A6478; --text-faint:#7C859A;
+  --text:#1B2233; --text-dim:#5A6478; --text-faint:#626B7E;
   --grad-a:#6E8CF5; --grad-b:#5FC1E8;
   --grad:linear-gradient(135deg,var(--grad-a),var(--grad-b));
   --orange:#DD6B20; --orange-fill:#F2994A;
   --mint:#0F9D6E; --mint-soft:#E1F5EC;
   --violet:#7C6CF0; --rose:#E2649B; --cyan:#2BB3D6; --gold:#D9A227;
   --red:#D6432E;
-  --on-grad:#FFFFFF;
+  --on-grad:#0B1120;
+  /* Texto en color (v1.1): texto pequeño usa X-text; rellenos, barras y bordes usan el token base */
+  --gold-text:#856000; --mint-text:#0A7350; --cyan-text:#0B7490; --orange-text:#A94F10; --orange-fill-text:#A94F10;
+  --rose-text:#B8336E; --red-text:#B7351F; --violet-text:#5B4BD6; --grad-a-text:#4560CF; --link:#4560CF;
   --nav-bg:rgba(244,246,251,0.86);
   --shadow:0 1px 2px rgba(27,34,51,.05),0 10px 28px rgba(70,110,220,.08);
   --shadow-hover:0 4px 14px rgba(27,34,51,.08),0 18px 40px rgba(70,110,220,.14);
@@ -45,6 +51,8 @@ body.theme-dark{
   --mint:#34D399; --mint-soft:#173327;
   --violet:#A78BFA; --rose:#F48FB6; --cyan:#5FD5F0; --gold:#F0C05A;
   --red:#F17161;
+  --gold-text:#F0C05A; --mint-text:#34D399; --cyan-text:#5FD5F0; --orange-text:#F2994A; --orange-fill-text:#F2994A;
+  --rose-text:#F48FB6; --red-text:#F17161; --violet-text:#A78BFA; --grad-a-text:#8FA8FF; --link:#8FA8FF;
   --nav-bg:rgba(11,17,32,0.88);
   --shadow:0 1px 2px rgba(0,0,0,.25),0 10px 28px rgba(0,0,0,.35);
   --shadow-hover:0 4px 16px rgba(0,0,0,.32),0 20px 44px rgba(120,170,240,.18);
@@ -85,11 +93,15 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:var(--grad-b);box-shadow:0 0 8px var(--grad-b)}
 @keyframes jdcOrbit{to{transform:rotate(360deg)}}
 .brand-name{font-family:var(--mono);font-size:var(--fs-small);font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--grad-a);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  color:var(--link);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:14px}
 .nav-links{display:flex;align-items:center;gap:20px}
 .nav-links a{font-size:var(--fs-ui);font-weight:500;color:var(--text-dim);text-decoration:none;white-space:nowrap}
-.nav-links a:hover{color:var(--grad-a)}
+.nav-links a{position:relative}
+.nav-links a:hover{color:var(--link)}
+/* Sección activa: la marca el script de sección activa de cada página */
+.nav-links a.active{color:var(--text);font-weight:700}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:var(--r-xs);background:var(--grad)}
 .lang-toggle{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:var(--r-pill);
   background:var(--panel);flex-shrink:0}
 .lang-toggle button{font-family:var(--mono);font-size:var(--fs-label);font-weight:700;padding:6px 11px;border:none;
@@ -122,7 +134,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   bottom:100%;height:calc(var(--band-gap) + 1px);pointer-events:none;
   background:color-mix(in srgb,var(--ink) 55%,transparent);
   backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%)}
-.sec-num{font-family:var(--mono);font-size:var(--fs-ui);font-weight:700;color:var(--sec-accent,var(--grad-a))}
+.sec-num{font-family:var(--mono);font-size:var(--fs-ui);font-weight:700;color:var(--sec-text,var(--link))}
 .sec-title{margin:0;font-size:var(--fs-h2);font-weight:800;line-height:1.25}
 .sec-kicker{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);
   position:relative;padding-left:13px}
@@ -142,17 +154,17 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   border:1px solid var(--line);background:var(--panel-2);color:var(--text);cursor:pointer;text-decoration:none;
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   transition:border-color .15s ease,transform .15s ease,filter .15s ease}
-.btn:hover{border-color:var(--grad-a);color:var(--grad-a);transform:translateY(-1px)}
+.btn:hover{border-color:var(--grad-a);color:var(--link);transform:translateY(-1px)}
 .btn.primary{background:var(--grad);border-color:transparent;color:var(--on-grad);box-shadow:var(--shadow-accent)}
 .btn.primary:hover{color:var(--on-grad);filter:brightness(1.07)}
 .pill{font-family:var(--mono);font-size:var(--fs-label);letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;
-  border-radius:var(--r-pill);white-space:nowrap;color:var(--mint);background:var(--mint-soft);
+  border-radius:var(--r-pill);white-space:nowrap;color:var(--mint-text);background:var(--mint-soft);
   border:1px solid color-mix(in srgb,var(--mint) 40%,transparent)}
 
 /* --- Pie --- */
 .site-foot{position:relative;z-index:1;border-top:1px solid var(--line);padding:28px var(--gutter);text-align:center;
   font-size:var(--fs-small);color:var(--text-faint)}
-.site-foot a{color:var(--grad-a);font-weight:700;text-decoration:none}
+.site-foot a{color:var(--link);font-weight:700;text-decoration:none}
 
 /* --- Aparición al hacer scroll --- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
@@ -163,11 +175,13 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   :root{--gutter:16px}
   .nav-burger{display:flex}
   .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;
-    background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:var(--panel);box-shadow:var(--shadow);
     border-bottom:1px solid var(--line);padding:8px var(--gutter) 16px}
   .nav-links.open{display:flex}
   .nav-links a{padding:13px 4px;border-bottom:1px solid var(--line);font-size:var(--fs-ui)}
   .nav-links a:last-child{border-bottom:none}
+  .nav-links a.active{color:var(--link)}
+  .nav-links a.active::after{left:-4px;right:auto;top:13px;bottom:13px;width:3px;height:auto}
   .nav-right{gap:10px}
   .c-3,.c-4,.c-5,.c-6,.c-7,.c-8{grid-column:span 12}
   .sec-title{font-size:var(--fs-lead)}
@@ -209,10 +223,10 @@ section{padding:40px 0 6px;}
 .ficha dt{font:600 var(--fs-label) var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--text-faint);padding-top:2px}
 .ficha dd{margin:0;color:var(--text)}
 .tg{display:inline-block;align-self:flex-start;font:600 var(--fs-label) var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:var(--r-pill);padding:3px 10px;margin-bottom:12px;border:1px solid var(--line-strong);color:var(--text-dim)}
-.tg.h{border-color:color-mix(in srgb,var(--mint) 55%,transparent);color:var(--mint)}
-.tg.i{border-color:color-mix(in srgb,var(--grad-a) 55%,transparent);color:var(--grad-a)}
-.tg.e{border-color:color-mix(in srgb,var(--red) 60%,transparent);color:var(--red)}
-.hz .num{font:700 var(--fs-ui) var(--mono);color:var(--gold);margin-bottom:6px}
+.tg.h{border-color:color-mix(in srgb,var(--mint) 55%,transparent);color:var(--mint-text)}
+.tg.i{border-color:color-mix(in srgb,var(--grad-a) 55%,transparent);color:var(--grad-a-text)}
+.tg.e{border-color:color-mix(in srgb,var(--red) 60%,transparent);color:var(--red-text)}
+.hz .num{font:700 var(--fs-ui) var(--mono);color:var(--gold-text);margin-bottom:6px}
 .tw{overflow-x:auto;margin-top:14px}
 table.vg{width:100%;border-collapse:collapse;font-size:var(--fs-ui)}
 table.vg th{font:600 var(--fs-label) var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line-strong)}
@@ -244,7 +258,7 @@ table.vg tr:last-child td{border-bottom:none}
 <a class="btn primary lgx" data-i18n="cta.pdf" href="informe-02-asuntos-regulatorios.pdf" download>↓ Descargar informe (PDF, español)</a>
 <a class="btn lgx" data-i18n="cta.hal" href="#hallazgos">Ver hallazgos</a>
 </div></header>
-<section id="resumen"><div class="sec-head" style="--sec-accent:var(--gold)"><span class="sec-num">01 —</span><h2 class="sec-title" data-i18n="s1.t">Resumen</h2></div>
+<section id="resumen"><div class="sec-head" style="--sec-accent:var(--gold);--sec-text:var(--gold-text)"><span class="sec-num">01 —</span><h2 class="sec-title" data-i18n="s1.t">Resumen</h2></div>
 <div class="grid"><article class="panel c-8 reveal"><span class="rot" data-i18n="res.rot">Resumen</span>
 <p data-i18n="res.p0">El informe caracteriza el mercado colombiano de servicios profesionales de asuntos regulatorios y cumplimiento de producto: los trámites, certificaciones y autorizaciones que un bien debe obtener y mantener para venderse legalmente. Abarca cuatro frentes administrados por autoridades distintas: autorizaciones sanitarias, registros de insumos agropecuarios, certificados de conformidad con reglamentos técnicos y cumplimiento de etiquetado.</p>
 <p data-i18n="res.p1">Documenta un universo de 168.917 autorizaciones sanitarias vigentes, un gasto obligatorio en tarifas oficiales expresadas en unidades de valor básico y un panorama competitivo más ocupado de lo que parece: un actor global que opera Colombia como centro regional, firmas de abogados establecidas y decenas de consultoras locales.</p>
@@ -259,7 +273,7 @@ table.vg tr:last-child td{border-bottom:none}
 <dt data-i18n="fi.k6">JEL</dt><dd data-i18n="fi.v6">L84 · I18 · K23 · L15 · F13</dd>
 <dt data-i18n="fi.k7">Temas</dt><dd data-i18n="fi.v7">Asuntos regulatorios · registro sanitario · cumplimiento de producto · tercerización de cumplimiento · representante local</dd>
 </dl></aside></div></section>
-<section id="hallazgos"><div class="sec-head" style="--sec-accent:var(--gold)"><span class="sec-num">02 —</span><h2 class="sec-title" data-i18n="s2.t">Hallazgos clave</h2></div>
+<section id="hallazgos"><div class="sec-head" style="--sec-accent:var(--gold);--sec-text:var(--gold-text)"><span class="sec-num">02 —</span><h2 class="sec-title" data-i18n="s2.t">Hallazgos clave</h2></div>
 <div class="grid">
 <article class="panel hz c-4 reveal"><span class="num">01</span>
 <span class="tg h" data-i18n="tg.h">Hecho verificado</span>
@@ -279,14 +293,14 @@ table.vg tr:last-child td{border-bottom:none}
 </div>
 <p class="vnote" data-i18n="hz.nota">La etiqueta indica cómo clasifica el propio informe cada afirmación: hecho verificado en fuente primaria o inferencia del análisis.</p>
 </section>
-<section id="metodo"><div class="sec-head" style="--sec-accent:var(--gold)"><span class="sec-num">03 —</span><h2 class="sec-title" data-i18n="s3.t">Cómo se hizo</h2></div>
+<section id="metodo"><div class="sec-head" style="--sec-accent:var(--gold);--sec-text:var(--gold-text)"><span class="sec-num">03 —</span><h2 class="sec-title" data-i18n="s3.t">Cómo se hizo</h2></div>
 <div class="grid"><article class="panel c-12 reveal"><ul>
 <li data-i18n="me.0">Investigación de escritorio con cuatro tipos de fuente: normativa primaria (decretos, resoluciones y decisiones andinas), estadística oficial (tableros institucionales, comunicados y DANE), estadística gremial (ANDI y sus cámaras) y fuentes corporativas y prensa especializada.</li>
 <li data-i18n="me.1">La competencia se analizó con un mapa por capas de la cadena de valor: cada actor se ubicó en su capa y se verificó en su propio sitio web. Para la comparación internacional se estudiaron cinco jurisdicciones con la figura del representante local obligatorio.</li>
 <li data-i18n="me.2">Cada afirmación relevante se clasifica como hecho verificado en fuente primaria, dato declarado por una parte interesada sin auditoría independiente o inferencia propia del análisis. Cuando un dato no se encontró, se declara como no encontrado.</li>
 <li data-i18n="me.3">Limitaciones: no se hicieron entrevistas con empresas ni consultoras, ni se accedió a precios de transacciones reales; los honorarios vienen de fuentes secundarias. Casi todas las cifras verificables provienen del frente sanitario: los frentes técnico, agropecuario y ambiental quedan sin cuantificar.</li>
 </ul></article></div></section>
-<section id="vigencia"><div class="sec-head" style="--sec-accent:var(--gold)"><span class="sec-num">04 —</span><h2 class="sec-title" data-i18n="s4.t">Nota de vigencia y fe de erratas</h2></div>
+<section id="vigencia"><div class="sec-head" style="--sec-accent:var(--gold);--sec-text:var(--gold-text)"><span class="sec-num">04 —</span><h2 class="sec-title" data-i18n="s4.t">Nota de vigencia y fe de erratas</h2></div>
 <div class="grid"><article class="panel c-12 reveal">
 <p data-i18n="vg.intro">El informe tiene corte de información en agosto de 2026. En noviembre de 2026 se revisaron sus cifras y normas más sensibles al tiempo; esto es lo que cambió o debe corregirse. El PDF se publica sin modificar su contenido.</p>
 <div class="tw"><table class="vg"><thead><tr><th data-i18n="vg.h1" scope="col">Tipo</th><th data-i18n="vg.h2" scope="col">Detalle</th></tr></thead><tbody>
@@ -299,7 +313,7 @@ table.vg tr:last-child td{border-bottom:none}
 </tbody></table></div>
 <p class="vnote" data-i18n="vg.fuentes">Fuentes de la revisión: circulares y guías del INVIMA sobre la Oficina Virtual e InvimÁgil (2026), Resolución INVIMA 2026058314 de 2026 y Resolución MinHacienda 3488 de 2025 (UVB 2026, sin cambios). Revisado en noviembre de 2026.</p>
 </article></div></section>
-<section id="informe"><div class="sec-head" style="--sec-accent:var(--gold)"><span class="sec-num">05 —</span><h2 class="sec-title" data-i18n="s5.t">Informe completo</h2></div>
+<section id="informe"><div class="sec-head" style="--sec-accent:var(--gold);--sec-text:var(--gold-text)"><span class="sec-num">05 —</span><h2 class="sec-title" data-i18n="s5.t">Informe completo</h2></div>
 <div class="grid"><article class="panel au cta-box c-12 reveal">
 <h3 data-i18n="inf.t">El mercado de servicios de gestión de asuntos regulatorios y cumplimiento de producto en Colombia</h3>
 <p data-i18n="inf.p">Documento completo en español: marco regulatorio por frente, tarifas oficiales, universo de autorizaciones, cadena de valor y competencia, comparación internacional del representante local, modelos de ingreso, riesgos, escenarios y nota de incertidumbre técnica. Incluye resumen en inglés.</p>
@@ -337,4 +351,6 @@ function fr(){cx.clearRect(0,0,W,H);const c=getComputedStyle(document.body).getP
 for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;const dm=Math.hypot(p.x-M.x,p.y-M.y);cx.globalAlpha=dm<140?.6:.35;cx.beginPath();cx.arc(p.x,p.y,1.4,0,7);cx.fill()}
 for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const d=Math.hypot(P[i].x-P[j].x,P[i].y-P[j].y);if(d<120){cx.globalAlpha=(1-d/120)*.12;cx.beginPath();cx.moveTo(P[i].x,P[i].y);cx.lineTo(P[j].x,P[j].y);cx.stroke()}}
 if(!red)requestAnimationFrame(fr)}fr();
+
+/* JDC nav-activa */(function(){const L=[...document.querySelectorAll('.nav-links a')].map(a=>{const h=a.getAttribute('href')||'';const id=a.dataset.target||(h.startsWith('#')?h.slice(1):'');const el=id&&document.getElementById(id);return el?{a,el:el.closest('section,.section-block')||el}:null}).filter(Boolean);if(!L.length)return;let raf=0;function upd(){raf=0;const off=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||64)+96;let cur=null;for(const x of L){if(x.el.getBoundingClientRect().top-off<=0)cur=x}if(cur&&innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=L[L.length-1];L.forEach(x=>{const on=x===cur;x.a.classList.toggle('active',on);on?x.a.setAttribute('aria-current','location'):x.a.removeAttribute('aria-current')})}addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(upd)},{passive:true});addEventListener('resize',upd);upd()})();
 </script></body></html>
